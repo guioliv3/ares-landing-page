@@ -1,0 +1,92 @@
+[
+  {
+    "name": "hero",
+    "source": "assets-source\\fachada-tecido.png",
+    "width": 1280,
+    "height": 1403
+  },
+  {
+    "name": "pool",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_21_PISCINA ADULTO_EF.jpg",
+    "width": 5333,
+    "height": 3000
+  },
+  {
+    "name": "gourmet",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_20_AREA DO CHURRASCO_EF.jpg",
+    "width": 6090,
+    "height": 2900
+  },
+  {
+    "name": "fitness",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_19_FITNESS_EF.jpg",
+    "width": 5333,
+    "height": 2424
+  },
+  {
+    "name": "kids",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_11_ESPAÇO KIDS_EF.jpg",
+    "width": 5333,
+    "height": 3000
+  },
+  {
+    "name": "party",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_15_SALAO DE FESTAS 01_EF.jpg",
+    "width": 5000,
+    "height": 3333
+  },
+  {
+    "name": "living",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_26_LIVING APTO_EF.jpg",
+    "width": 5000,
+    "height": 3333
+  },
+  {
+    "name": "suite",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_27_SUITE APTO_EF.jpg",
+    "width": 5000,
+    "height": 3750
+  },
+  {
+    "name": "balcony",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_28_SACADA APTO_EF.jpg",
+    "width": 5000,
+    "height": 3333
+  },
+  {
+    "name": "access",
+    "source": "assets-source\\Itajaí\\Perspectivas\\EF2\\TEC_ITA_06_ACESSO_EF2.jpg",
+    "width": 5333,
+    "height": 3000
+  },
+  {
+    "name": "lobby",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_07_LOBBY_EF.jpg",
+    "width": 5333,
+    "height": 3000
+  },
+  {
+    "name": "region",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_01_FOTOMONTAGEM 01_EF.jpg",
+    "width": 6708,
+    "height": 4500
+  },
+  {
+    "name": "region-2",
+    "source": "assets-source\\Itajaí\\Perspectivas\\TEC_ITA_02_FOTOMONTAGEM 02_EF.jpg",
+    "width": 5464,
+    "height": 3070
+  },
+  {
+    "name": "plan-a",
+    "source": "assets-source\\Itajaí\\Plantas Humanizadas\\V2\\TEC_ITA_05_PH_APTO A_EF-V2.JPG",
+    "width": 6200,
+    "height": 5650
+  },
+  {
+    "name": "plan-b",
+    "source": "assets-source\\Itajaí\\Plantas Humanizadas\\V2\\TEC_ITA_06_PH_APTO B_EF-V2.JPG",
+    "width": 6200,
+    "height": 5150
+  }
+]

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.npm-cache/
+.playwright-cli/
+.env
+.env.*
+!.env.example
+assets-source/**
+!assets-source/manifest.json
+.taste-skill/
+.qa/

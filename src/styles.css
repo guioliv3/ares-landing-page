@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Manrope, "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Archivo", "Avenir Next", "Segoe UI", sans-serif;
   color: #fcfbf7;
   background: #07131a;
   font-synthesis: none;

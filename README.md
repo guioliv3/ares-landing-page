@@ -30,4 +30,36 @@ No Playwright, passaram nove verificações: menu móvel abre/fecha; âncora de 
 
 ## Origem dos materiais
 
-`assets-source/` reúne os arquivos fornecidos pelo usuário: a fachada de referência do ARES Aquarius e renders/plantas do pacote chamado Itajaí. `public/images/hero-wide.webp` e `public/images/hero-mobile.webp` são imagens derivadas por geração a partir da fachada fornecida, com enquadramentos próprios para desktop e celular. Os demais derivados otimizados ficam em `public/images/`; o manifesto registra a relação com as fontes. Os arquivos originais são ignorados pelo Git para evitar adicionar o pacote bruto ao repositório.
+`src/assets/TEC_ITA_04_FACHADA_02_P2.jpg` guarda a imagem original fornecida para o hero; `public/images/hero-ares.webp` e sua versão WebP otimizada e usada pela página. Os demais arquivos em `public/images/` são derivados para galeria e plantas. `assets-source/manifest.json` registra a proveniência do pacote de referência; os arquivos brutos desse pacote são ignorados pelo Git.
+
+## Organização do código
+
+A estrutura atual separa a página, dados de conteúdo, formulário e estilos. Para ampliar a landing page, mantenha cada seção visual independente em `src/components/sections/` e deixe `HomePage` apenas ordenar essas seções:
+
+```text
+src/
+  components/
+    forms/
+      LeadForm.tsx
+    sections/
+      HeroSection.tsx
+      SpecsSection.tsx
+      GallerySection.tsx
+      PlansSection.tsx
+      RegionSection.tsx
+      LocationSection.tsx
+      ContactSection.tsx
+  data/
+    siteContent.ts
+  pages/
+    HomePage.tsx
+  styles/
+    main.css
+    refinements.css
+  main.tsx
+public/
+  images/
+  ares-aquarius.svg
+```
+
+Conteúdo e URLs reutilizáveis ficam em `data/`; componentes de formulário ficam em `components/forms/`; a página compõe as seções sem concentrar os dados e estilos globais. As classes CSS existentes foram mantidas para preservar o visual.

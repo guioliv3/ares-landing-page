@@ -1,118 +1,12 @@
-import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from 'react'
+﻿import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import {
   ArrowDown, ArrowRight, ArrowUpRight, BedDouble, CarFront, Maximize2,
   ChevronLeft, ChevronRight, Menu, X,
 } from 'lucide-react'
+import LeadForm from '../components/forms/LeadForm'
+import { gallery, poiLocations, type Category } from '../data/siteContent'
 
-type Category = 'Lazer' | 'Decorado' | 'Região' | 'Acessos'
-
-const gallery: Record<Category, { label: string; image: string }[]> = {
-  Lazer: [
-    { label: 'Piscina', image: '/images/pool.webp' },
-    { label: 'Fitness', image: '/images/fitness.webp' },
-    { label: 'Espaço kids', image: '/images/kids.webp' },
-    { label: 'Espaço gourmet', image: '/images/gourmet.webp' },
-    { label: 'Salão de festas', image: '/images/party.webp' },
-  ],
-  Decorado: [
-    { label: 'Living', image: '/images/living.webp' },
-    { label: 'Suíte', image: '/images/suite.webp' },
-    { label: 'Sacada', image: '/images/balcony.webp' },
-  ],
-  Região: [
-    { label: 'Vista da região', image: '/images/region.webp' },
-    { label: 'Panorama', image: '/images/region-2.webp' },
-  ],
-  Acessos: [
-    { label: 'Acesso', image: '/images/access.webp' },
-    { label: 'Hall', image: '/images/lobby.webp' },
-  ],
-}
-
-const poiLocations = [
-  {
-    label: 'Colinas Shopping',
-    description: 'Lojas, serviços, gastronomia e lazer em um dos principais shoppings da cidade.',
-    query: 'Colinas+Shopping%2C+S%C3%A3o+Jos%C3%A9+dos+Campos',
-  },
-  {
-    label: 'Pão de Açúcar',
-    description: 'Mercado para incluir as compras do dia a dia na rotina.',
-    query: 'P%C3%A3o+de+A%C3%A7%C3%BAcar%2C+Parque+Residencial+Aquarius%2C+S%C3%A3o+Jos%C3%A9+dos+Campos',
-  },
-  {
-    label: 'Oba Hortifruti',
-    description: 'Frutas, verduras e itens frescos no Aquarius Open Mall.',
-    query: 'Oba+Hortifruti%2C+Avenida+Comendador+Vicente+de+Paulo+Penido+373%2C+S%C3%A3o+Jos%C3%A9+dos+Campos',
-  },
-  {
-    label: 'Praça Ulisses Guimarães',
-    description: 'Um espaço ao ar livre para caminhadas, atividades e momentos em família.',
-    query: 'Pra%C3%A7a+Ulisses+Guimar%C3%A3es%2C+Jardim+Aquarius%2C+S%C3%A3o+Jos%C3%A9+dos+Campos',
-  },
-  {
-    label: 'Carrefour Aquarius',
-    description: 'Mais uma opção de supermercado e serviços na região.',
-    query: 'Carrefour+Jardim+Aquarius%2C+S%C3%A3o+Jos%C3%A9+dos+Campos',
-  },
-  {
-    label: 'Parque Ribeirão Vermelho',
-    description: 'Uma opção para aproveitar o ar livre na região oeste da cidade.',
-    query: 'Parque+Ribeir%C3%A3o+Vermelho%2C+S%C3%A3o+Jos%C3%A9+dos+Campos',
-  },
-  {
-    label: 'Av. Cassiano Ricardo',
-    description: 'Uma das principais vias de circulação do Jardim Aquarius.',
-    query: 'Avenida+Cassiano+Ricardo%2C+S%C3%A3o+Jos%C3%A9+dos+Campos',
-  },
-]
-function LeadForm({ compact = false }: { compact?: boolean }) {
-  const [status, setStatus] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const endpoint = import.meta.env.VITE_LEAD_ENDPOINT?.trim()
-
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (isSubmitting) return
-    const form = event.currentTarget
-    if (!endpoint) {
-      setStatus('O formulário está temporariamente indisponível. Tente novamente mais tarde.')
-      return
-    }
-    setIsSubmitting(true)
-    setStatus('Enviando…')
-    const values = Object.fromEntries(new FormData(form).entries())
-    const controller = new AbortController()
-    const timeout = window.setTimeout(() => controller.abort(), 15_000)
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...values, project: 'ARES Aquarius' }),
-        signal: controller.signal,
-      })
-      if (!response.ok) throw new Error('Request failed')
-      form.reset()
-      setStatus('Recebemos seus dados. Em breve entraremos em contato.')
-    } catch {
-      setStatus(controller.signal.aborted ? 'O envio demorou demais. Tente novamente.' : 'Não foi possível enviar agora. Confira sua conexão e tente novamente.')
-    } finally {
-      window.clearTimeout(timeout)
-      setIsSubmitting(false)
-    }
-  }
-
-  return <form className={`lead-form${compact ? ' lead-form--compact' : ''}`} onSubmit={submit}>
-    <label>Nome<input name="name" autoComplete="name" required placeholder="Seu nome" /></label>
-    <label>E-mail<input name="email" type="email" autoComplete="email" required placeholder="voce@email.com" /></label>
-    <label><span>Telefone <small>(opcional)</small></span><input name="phone" type="tel" autoComplete="tel" placeholder="(00) 00000-0000" /></label>
-    <label className="consent"><input type="checkbox" name="consent" required /><span>Autorizo contato sobre o ARES Aquarius.</span></label>
-    <button className="button button--light" type="submit" disabled={isSubmitting} aria-busy={isSubmitting}>{isSubmitting ? 'Enviando…' : 'Tenho interesse'} <ArrowRight size={16} /></button>
-    <p className="form-status" role="status" aria-live="polite">{status}</p>
-  </form>
-}
-
-function App() {
+function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState<Category>('Lazer')
   const [activePoi, setActivePoi] = useState(0)
@@ -157,8 +51,7 @@ function App() {
   return <main>
     <section className="hero" id="inicio">
       <picture className="hero-scene">
-        <source media="(max-width: 760px)" srcSet="/images/hero-mobile.webp" />
-        <img src="/images/hero-wide.webp" alt="" />
+        <img src="/images/hero-ares.webp" alt="" fetchPriority="high" />
       </picture>
       <header className="site-header">
         <a href="#inicio" className="hero-brand" aria-label="ARES Aquarius, início"><img src="/ares-aquarius.svg" alt="ARES Aquarius" width="180" height="60" /></a>
@@ -231,4 +124,4 @@ function App() {
   </main>
 }
 
-export default App
+export default HomePage

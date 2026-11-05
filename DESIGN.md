@@ -1,74 +1,64 @@
-# ARES Aquarius — direção visual
+﻿---
+title: ARES Aquarius Design System
+version: 1.0
+---
 
-## Identidade e intenção
+# ARES Aquarius Design System
 
-Landing page imobiliária de conversão, em português brasileiro. O visitante deve entender que ARES Aquarius é um empreendimento residencial e conseguir solicitar informações pelo formulário. A composição e a fotografia de referência fornecidas pelo usuário são a autoridade visual desta página: arquitetura noturna, tecido de revelação, verde petróleo quase preto, sage e branco quente. Preservar essa direção com fidelidade; não substituir por uma estética imobiliária genérica.
+## Overview
 
-**Ideia visual:** a fachada coberta pelo tecido é o gesto de revelação que abre a página; o tecido e suas curvas reaparecem como transição suave entre capítulos, sem ornamentos acrescentados.
+A reusable visual foundation for ARES residential project pages. The guiding idea is **Arquitetura em Revelação**: contemporary, serene, precise. Preserve the existing ARES Aquarius landing page composition, photography, section order, and interactions while applying consistent brand foundations.
 
-## Tokens
+## Colors
 
-Valores iniciais para implementação; ajustar contraste em contexto e manter os papéis consistentes.
-
-| Token | Valor | Uso |
+| Token | Value | Role |
 |---|---|---|
-| `--ares-ink` | `#07131A` | Fundo hero, seções escuras e rodapé |
-| `--ares-petrol` | `#102A2B` | Faixas e painéis escuros secundários |
-| `--ares-sage` | `#98AA9D` | Painel de conversão, acentos e detalhes funcionais |
-| `--ares-sage-deep` | `#63796D` | Hover e ênfase em fundo claro |
-| `--ares-paper` | `#F3F1EA` | Plantas, superfícies claras e fundo dos campos |
-| `--ares-white` | `#FCFBF7` | Texto principal em fundo escuro |
-| `--ares-muted` | `#C3CBC5` | Texto secundário em fundo escuro; conferir contraste |
-| `--ares-metal` | `#B99A77` | Pequeno acento quente, presente na luz/render da fachada |
+| `--color-brand-charcoal` | `#192129` | Primary dark surface and brand anchor, Carvão Noturno |
+| `--color-brand-sage` | `#95B5A3` | Secondary surface and calm supporting accent, Sálvia Mineral |
+| `--color-brand-bronze` | `#9F8770` | Primary action, selected state, and focused detail, Bronze Arquitetônico |
+| `--color-background-raised` | `#102124` | Raised dark section surface |
+| `--color-background-light` | `#F8F8F4` | Light section and form surface |
+| `--color-text-primary` | `#F8F8F4` | Primary text on dark surfaces |
+| `--color-text-secondary` | `#D0D8D3` | Supporting text on dark surfaces |
+| `--color-text-on-brand` | `#192129` | Text over bronze and sage |
 
-Não usar gradientes, glow, vidro fosco ou sombra decorativa. Diferenciar seções por campos inteiros de cor, fotografia e escala. Texto corrente deve manter contraste legível; não usar sage claro ou cinza fraco como texto pequeno sobre o fundo escuro.
+Use bronze more visibly for primary buttons, active gallery tabs, and concise architectural details. Bronze actions use charcoal text. Keep body text contrast clear. Separate chapters with full color fields and photography. Use gradients only as image scrims needed for legibility; avoid decorative gradients, glow, glass effects, and ornamental shadows.
 
-## Tipografia
+## Typography
 
-Uma família sans-serif geométrica e contemporânea, de preferência Manrope (com fallback sans-serif), para títulos, corpo, navegação e formulários. O wordmark exibido no hero integra a fotografia. O logo vetorial usado em navegação/rodapé é uma reconstrução SVG provisória, traçada pelo responsável a partir da geometria de referência fornecida pelo usuário; substituir pelo vetor oficial quando disponível. Títulos com peso regular ou médio e espaçamento ligeiramente fechado; corpo com peso regular e entrelinha confortável. Evitar tracking exagerado em caixa alta e fontes decorativas. Garantir carregamento local/estável ou fallback visual equivalente.
+- **Display and headings:** Michroma, loaded locally from `@fontsource/michroma` through `--font-display`.
+- **Body, controls, navigation:** Archivo through `@fontsource/archivo`, assigned to `--font-body`.
+- Use `--tracking-title-large: 0.1em` (tracking 100) for large headings and `--tracking-title-small: 0.02em` (tracking 20) for smaller headings. Keep line wrapping intentional at mobile sizes. Body copy remains readable at normal sizes and comfortable line height. Avoid using the display face for dense paragraphs or small controls.
 
-## Composição e sequência
+## Layout
 
-1. **Hero / apresentação.** Imagem da torre coberta à noite ocupa o campo dominante. Navegação discreta no topo (marca, âncoras essenciais e ação de contato). Copy e formulário à esquerda: “RESPIRE NOVOS ARES.”, identificação de ARES Aquarius em Jardim Aquarius, São José dos Campos, e ação de interesse. Diferenciais com ícones lineares simples em coluna à direita, alinhados abaixo do wordmark aplicado no tecido; não cobrir a marca da fotografia. Usar scrim escuro sob texto apenas para contraste.
-2. **Faixa de especificações.** Faixa contrastante sage ou clara, com terminação ondulada inspirada no drapeado do tecido. Organizar em uma linha arejada os dados fornecidos na referência: 3 dormitórios (1 suíte), 102 a 106 m² e 2 vagas. O contorno ondulado é uma transição de seção, não um conjunto de formas decorativas.
-3. **Lazer.** Título em campo escuro, imagem ampla da piscina e cinco miniaturas selecionáveis em faixa horizontal sob a imagem, vindas dos renders fornecidos. A miniatura ativa deve ter estado visual claro e acessível por teclado. Em telefone, imagem em largura total e miniaturas em trilho horizontal rolável.
-4. **Plantas.** Campo `--ares-paper`; título e apoio à esquerda, duas plantas humanizadas lado a lado à direita, identificadas como “Planta A” e “Planta B”. Mostrar imagem em tamanho suficiente para leitura e oferecer ampliação/visualização sem esconder o conteúdo no mobile; no telefone, título vem antes das duas plantas em coluna.
-5. **Região e tour 360°.** Panorama amplo para localização/entorno em Jardim Aquarius e chamada para tour 360°. Não atribuir ao Aquarius panoramas ou vistas que não tenham validação do empreendimento. Como não há endpoint/Panoee fornecido, preparar o destino do tour como configuração por URL e ocultar/desativar a chamada enquanto não houver link real; nunca simular uma visita concluída.
-6. **Pontos de interesse.** Lista editorial pareada a mapa ou imagem, com os pontos citados na referência: Colinas Shopping, Pão de Açúcar, Parque Ribeirão Vermelho e Av. Cassiano Ricardo. Não adicionar tempos/distâncias sem fonte.
-7. **Mapa e contato.** Mapa junto a painel sage de contato, com Jardim Aquarius, São José dos Campos. A posição exata do empreendimento, pin e rotas devem usar endereço/coordenadas confirmados; até então, manter mapa/endereço configuráveis e não posicionar um pin fictício.
-8. **Formulário final e rodapé.** Repetir CTA com formulário curto e mesma linguagem visual do hero. Rodapé escuro, nome ARES Aquarius em destaque e links institucionais/legais somente quando fornecidos.
+Keep the current landing page sequence and responsive composition: image-led hero, specification band, leisure gallery, plans, region/tour, nearby destinations, map/contact, final lead form, and footer. Use the shared content width token and existing section gutters. At narrow widths, stack content in reading order, keep gallery thumbnails scrollable, and preserve usable plant images and form controls. Do not introduce new sections or change the page's established information hierarchy as part of token adoption.
 
-Cada seção deve ter título próprio e composição distinta. Usar uma grelha comum e margens externas iguais. Ritmo amplo entre capítulos; componentes internos compactos e alinhados. Evitar grades de cartões uniformes. Cantos predominantemente retos, alinhados ao caráter arquitetônico; controles devem continuar fáceis de tocar.
+## Elevation & Depth
 
-## Responsividade
+The system is primarily flat. Establish hierarchy through spacing, surface color, typography, and photography. Keep shadows limited to functional overlays where needed. Photo scrims may use gradients strictly to support readable text.
 
-- Desktop: manter a fachada como imagem dominante; copy/form e diferenciais distribuem-se em colunas sem comprimir o título nem cobrir o wordmark do tecido.
-- Tablet: reduzir a navegação a links essenciais e reorganizar conteúdo em duas colunas quando houver espaço real; preservar imagem e leitura dos títulos.
-- Telefone: menu compacto acessível; hero em composição vertical, com imagem/crop que preserve a torre identificável e o título/form claramente legíveis. Diferenciais fluem abaixo do formulário em lista, não em minúsculos ícones. Estatísticas podem virar linha rolável ou lista curta; thumbs do lazer rolam horizontalmente. Plantas têm leitura e zoom próprios. Painéis e campos ocupam a largura disponível com alvo de toque confortável.
-- Evitar overflow horizontal e conteúdo dependente de hover. Estados de foco visíveis, labels persistentes nos campos e mensagens de validação claras.
+## Shapes
 
-## Interação e movimento
+Favor straight edges and restrained borders to reflect architectural lines. Keep existing rounded or organic edges that belong to the supplied photography or section transition. Controls retain comfortable touch targets and visible keyboard focus.
 
-Formulários priorizam poucos campos, labels visíveis e validação acessível. Não há endpoint informado: manter o envio preparado para configuração, sem exibir confirmação de sucesso falsa; esclarecer indisponibilidade de envio até integração. Navegação salta para as seções. Galeria de lazer seleciona imagem por clique, toque e teclado, com estado anunciado. Tour deve aceitar URL configurável e só abrir quando receber link real. Mapa e telefone/email devem usar destinos reais. Movimento discreto pode sugerir a revelação/drapeado apenas se não atrasar leitura, com alternativa `prefers-reduced-motion` e conteúdo visível sem JavaScript.
+## Components
 
-## Notas para revisão visual
+- **Primary action:** Bronze Arquitetônico fill with Carvão Noturno text.
+- **Secondary action:** Transparent or dark surface with a clear bronze border or hover state.
+- **Lead forms:** Integrated with their section surface; persistent labels, visible focus, and clear validation/status messages.
+- **Gallery controls:** Bronze active state with keyboard-accessible focus treatment.
+- **Section headings:** Michroma; eyebrow, navigation, labels, and body remain Archivo.
+- **Surfaces:** Charcoal for primary dark chapters, raised dark for supporting bands, and warm light for plans or other high-contrast content.
 
-Na revisão, a referência enviada pelo usuário prevalece sobre heurísticas visuais genéricas. Scrim neutro sobre a fotografia, hairlines necessárias a campos/controles e a ausência de vídeo ou movimento decorativo são escolhas intencionais quando mantêm a composição legível e estável. Corrigir sempre colisões com o wordmark, texto pequeno, quebra excessiva de títulos, crop que perca a torre e mudanças estruturais que afastem a página da referência.
+Implement shared values in `src/styles/tokens.css`. Components and page styles should consume semantic tokens instead of repeating brand color literals.
 
-## Imagens e proveniência
+## Do's and Don'ts
 
-- `assets-source/fachada-tecido.png`: imagem de referência fornecida do ARES Aquarius. É a imagem-chave do hero e inclui wordmark aplicado no tecido. `public/ares-aquarius.svg` é uma reconstrução geométrica provisória fornecida pelo responsável para cabeçalho/rodapé, não uma arte original vetorial.
-- `assets-source/Itajaí/Perspectivas/`: renders fornecidos pelo usuário e liberados para uso na página. O nome da pasta e nomes dos arquivos indicam outra origem/projeto; usar somente como material visual fornecido, sem afirmar que retratam o Aquarius.
-- `assets-source/Itajaí/Plantas Humanizadas/`: plantas fornecidas pelo usuário e liberadas para uso visual. Tipologia, metragem, configuração e correspondência com Aquarius permanecem por confirmar.
-
-Preservar a proveniência nos arquivos/nomes e na comunicação interna de implementação. Não inventar legenda factual para imagens potencialmente de outro empreendimento. Antes de publicação, substituir ou aprovar explicitamente cada render/planta como válido para o Aquarius.
-
-## Limites de conteúdo
-
-Copy fornecida na referência do usuário e liberada para uso: Jardim Aquarius, São José dos Campos; 3 dormitórios (1 suíte); 102 a 106 m²; 2 vagas; Colinas Shopping, Pão de Açúcar, Parque Ribeirão Vermelho e Av. Cassiano Ricardo. Não inventar distâncias ou tempos. O material de Itajaí não comprova que renders ou plantas retratam o Aquarius; essa correspondência deve constar na revisão de pré-publicação. Confirmar endereço/coordenadas do pin, URL real do tour, contatos, texto legal e backend/destino do formulário antes da publicação. Usar o logo fornecido pelo usuário; na ausência de vetor disponível no workspace, uma reprodução SVG fiel é aceitável e deve ser substituída pelo arquivo oficial quando disponível.
-
-## Revis�o visual final (29/10/2026)
-
-Inspecionada a captura real mobile de 390 px (`.qa/final-390-fold.jpg` e `.qa/final-390-full.jpg`). O hero empilha marca, headline e formul�rio com a torre identific�vel ao fundo e transi��o suave; os diferenciais seguem depois do formul�rio. As duas plantas agora ocupam a largura �til em coluna, com imagens leg�veis e controles de amplia��o vis�veis; isto corrige a vers�o anterior, que mantinha uma coluna lateral estreita no telefone. A galeria mant�m miniaturas em trilho horizontal. N�o alegar aus�ncia de clipping global apenas com esta captura mobile; os testes de overflow em 320/390/768/1440 foram reportados pelo root como aprovados.
-
-Limites visuais conhecidos: o painel do mapa aparece como superf�cie neutra/fallback quando o embed externo n�o carrega; manter link real para Google Maps e n�o tratar esse quadro como mapa funcional em todos os ambientes. O panorama da regi�o � material ilustrativo do pacote fornecido, n�o evid�ncia de vista do Aquarius; a pr�pria captura mostra legenda de imagem ilustrativa. Faltam integra��o real de envio do formul�rio e URL do tour 360; o comportamento atual deve explicitar indisponibilidade e n�o simular sucesso.
+- Do preserve the established ARES Aquarius layout, imagery, copy, and interactions while making structural styling changes.
+- Do use the three supplied brand colors as the palette source of truth.
+- Do reserve sage for supporting sections and accents; use bronze for stronger action and selection cues.
+- Do verify text contrast and visible focus states on every surface.
+- Don't add decorative gradients, glow, glass effects, or nonfunctional shadows.
+- Don't invent claims about imagery, property details, location, or project features.
+- Don't use unconfirmed renders as factual evidence that they depict ARES Aquarius.

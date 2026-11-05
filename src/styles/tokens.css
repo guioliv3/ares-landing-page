@@ -1,0 +1,42 @@
+:root {
+  color-scheme: dark;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: var(--color-background-dark);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  /* Brand palette */
+  --color-brand-charcoal: #192129;
+  --color-brand-sage: #95b5a3;
+  --color-brand-bronze: #9f8770;
+
+  /* Supporting surfaces and readable text */
+  --color-background-dark: var(--color-brand-charcoal);
+  --color-background-raised: #102124;
+  --color-background-light: #f8f8f4;
+  --color-text-primary: #f8f8f4;
+  --color-text-secondary: #d0d8d3;
+  --color-text-on-brand: var(--color-brand-charcoal);
+  --color-sage-deep: #688477;
+  --color-border-subtle: rgb(149 181 163 / 24%);
+
+  /* Interaction roles */
+  --color-accent-bronze: var(--color-brand-bronze);
+  --color-focus-ring: var(--color-brand-bronze);
+  --color-action-text: var(--color-brand-charcoal);
+
+  /* Type */
+  --font-body: "Archivo", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Michroma", var(--font-body);
+  --tracking-title-large: 0.1em; /* tracking 100 */
+  --tracking-title-small: 0.02em; /* tracking 20 */
+  --text-body: 15px;
+  --text-label: 12px;
+
+  /* Layout and motion */
+  --content-width: 1180px;
+  --motion-ease-standard: cubic-bezier(.23, 1, .32, 1);
+  --motion-duration-ui: 180ms;
+
+}
